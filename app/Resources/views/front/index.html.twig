@@ -1,0 +1,43 @@
+Front controller
+
+<div class="">
+    <form id="form-front-user" action="{{ path('app_front_index') }}" method="post">
+    <table>
+        <tr>
+            <td class="label">Login *</td>
+            <td class="data">
+                {{ form_widget(userForm.username, {'attr': {'placeholder': 'Votre login'}})}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Password *</td>
+            <td class="data">
+                {{ form_widget(userForm.plainPassword, {'attr': {'placeholder': 'Votre mot de passe'}})}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Email *</td>
+            <td class="data">
+                {{ form_widget(userForm.email, {'attr': {'placeholder': 'Votre mail'}})}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Nom *</td>
+            <td class="data">
+                {{ form_widget(userForm.lastname, {'attr': {'placeholder': 'Votre nom'}})}}
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Prénom* </td>
+            <td class="data">
+                {{ form_widget(userForm.firstname, {'attr': {'placeholder': 'Votre prénom'}})}}
+            </td>
+        </tr>
+    </table>
+    
+    <div>
+        <button class="btn-type-04 btn-modify btn-submit" type="submit">Valider ces informations</button>
+    </div>
+        
+    </form>
+</div>
