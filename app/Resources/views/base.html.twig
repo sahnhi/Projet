@@ -1,13 +1,98 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="en">
+<head>    
+<title>
+{% block title %}
+{% endblock %}
+</title>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300' rel='stylesheet' type='text/css'>
+{% block stylesheets %}
+    {% stylesheets 
+            '../app/Resources/public/css/reset.css' 
+            '../app/Resources/public/css/style.css'
+            '../app/Resources/public/css/slider.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+{% endblock stylesheets %}
+<!--[if lt IE 9]>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/html5.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+<![endif]-->
+</head>
+<body>
+<div class="bg">
+  <header>
+    <div class="main wrap">
+      <h1><a href="index.html">
+            {% image '../app/Resources/public/images/logo.png' %}
+                <img src="{{ asset_url }}" alt="" />
+            {% endimage %}</a></h1>
+      <p>8901 Marmora, Glasgow <span>8 (800) 552 5975</span></p>
+    </div>
+    <nav>
+      <ul class="menu">
+        <li class="current"><a href="index.html" class="home">
+                {% image '../app/Resources/public/images/home.jpg' %}
+                    <img src="{{ asset_url }}" alt="" />
+                {% endimage %}
+            </a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="maintenance.html">Maintenance</a></li>
+        <li><a href="repair.html">Repair</a></li>
+        <li><a href="price-list.html">Price List</a></li>
+        <li><a href="locations.html">Locations</a></li>
+        {% if username is defined and username == null %}
+            <li><a href="{{ path('login') }}">Se connecter</a></li>
+        {% else %}
+            <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+            <li><a href="#">Bienvenue {{ username }}</a></li>
+        {% endif %}
+      </ul>
+      <div class="clear"></div>
+    </nav>
+  </header>
+{% block page %}
+{% endblock %}
+  
+  <footer>Car Repair &copy; 2045 | <a href="#">Privacy Policy</a> | Design by: <a href="http://www.templatemonster.com/">TemplateMonster.com</a></footer>
+</div>
+</body>
+{% block javascripts %}
+    {% javascripts '../app/Resources/public/js/jquery-1.7.min.js'
+                   '../app/Resources/public/js/jquery.easing.1.3.js'
+                   '../app/Resources/public/js/tms-0.4.1.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+<script>
+$(document).ready(function () {
+    $('.slider')._TMS({
+        show: 0,
+        pauseOnHover: true,
+        prevBu: '.prev',
+        nextBu: '.next',
+        playBu: false,
+        duration: 500,
+        preset: 'fade',
+        pagination: true, //'.pagination',true,'<ul></ul>'
+        pagNums: false,
+        slideshow: 8000,
+        numStatus: false,
+        banners: 'fromBottom', // fromLeft, fromRight, fromTop, fromBottom
+        waitBannerAnimation: false,
+        progressBar: false
+    })
+})
+$(function () {
+    if ($(window).width() <= 1066) {
+        $("#slider .prev").css("left", "55px")
+        $("#slider .next").css("right", "55px")
+    }
+})
+</script>
 </html>

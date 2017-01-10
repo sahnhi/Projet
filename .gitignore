@@ -17,4 +17,8 @@
 /nbproject/private/
 /composer.phar
 /web/app_dev.php
+/web/css/*
+/web/js/*
+/web/images/*
 .gitattributes
+/no-debug

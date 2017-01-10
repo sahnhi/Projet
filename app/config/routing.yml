@@ -1,6 +1,21 @@
+user:
+    resource: "@AppUserBundle/Controller/"
+    type:     annotation
+#    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
   
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+login:
+    path:   /login
+    defaults:  { _controller: AppUserBundle:Security:login }
+
+login_check:
+    path:   /login_check
+
+logout:
+    path:   /logout
+    
+#fos_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -74,3 +74,10 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
     
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+
+    
